@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
 
 function CollegeSelect({setResults}) {
   const classes = useStyles();
-  const [dream, setDream] = React.useState("Pick A School");
+  const [dream, setDream] = React.useState(names[250]);
   const [inputDream, setInputDream] = React.useState("");
-  const [target, setTarget] = React.useState("Pick A School");
+  const [target, setTarget] = React.useState(names[157]);
   const [inputTarget, setInputTarget] = React.useState("");
-  const [safety, setSafety] = React.useState("Pick A School");
+  const [safety, setSafety] = React.useState(names[1]);
   const [inputSafety, setInputSafety] = React.useState("");
   
 

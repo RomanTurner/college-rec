@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import { useHistory } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
@@ -21,31 +20,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CollegePreview({results}) {
+export default function CollegePreview({ results }) {
   const classes = useStyles();
-  const history = useHistory();
-
   if (!results) {
-    return (<div>No Results</div>)
+    return <div>No Results</div>;
   }
 
-  // const handleClick = (college) => {
-  //   const name = college.name.split(" ").join("")
-  //   history.push(`/colleges/${name}`)
-  // };
-//debugger
-  const content = results.results.map((college) => 
-  {
-   const{ admission_rate,
-            avg_tuition,
-            city,
-            schoolname,
-            state,
-            student_pop,
-            url} = college
-            
+  const content = results.results.map((college) => {
+    const {
+      admission_rate,
+      avg_tuition,
+      city,
+      schoolname,
+      state,
+      student_pop,
+      url,
+      id,
+    } = college;
+
     return (
-      <Grid spacing={4} className={classes.grid}>
+      <Grid key={id} spacing={4} className={classes.grid}>
         <Card className={classes.media}>
           <CardContent>
             <Typography gutterBottom variant='h5' component='h2'>
@@ -73,21 +67,7 @@ export default function CollegePreview({results}) {
         </Card>
       </Grid>
     );
-  }
-    );
-
-  
-
+  });
 
   return content;
-  
 }
-
-
-  {
-    /* <CardActions>
-          <Button onClick={() => handleClick(college)} size='small' color='primary'>
-            Learn More
-          </Button>
-        </CardActions> */
-  }
