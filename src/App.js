@@ -1,22 +1,24 @@
 import React from "react";
 import College from "./College";
+import Header from "./Header";
 import CollegeShow from "./CollegeShow";
 import { Switch, Route, Redirect } from "react-router";
 
 function App() {
   return (
     <Switch>
-        <Route path='/colleges'>
-          <College/>
-        </Route>
-        <Route path='colleges/:name'>
-          <CollegeShow/>
+      <Route path='/colleges'>
+        <Header />
+        <College />
+      </Route>
+      <Route path='colleges/:name'>
+        <CollegeShow />
       </Route>
       <Route path='/'>
-        <Redirect to='/colleges'/>
+        <Redirect to='/colleges' />
       </Route>
-   </Switch>
- )
+    </Switch>
+  );
 }
 
 export default App;

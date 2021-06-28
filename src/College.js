@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: "center",
+    paddingTop: theme.spacing(2),
   },
 }));
 
@@ -17,7 +18,9 @@ function College() {
   const [results, setResults] = React.useState({results: []});
 
 
-      return (
+  return (
+    <>
+ 
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
             <Typography gutterBottom variant='h2' component='h1'>
@@ -35,7 +38,8 @@ function College() {
               <CollegePreview results={results} />
             </Grid>
           </Grid>
-        </Grid>
+      </Grid>
+      </>
       );
 }
 
