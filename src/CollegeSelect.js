@@ -18,26 +18,31 @@ function CollegeSelect({setResults}) {
   const [dream, setDream] = React.useState(names[345]);
   const [target, setTarget] = React.useState(names[12]);
   const [safety, setSafety] = React.useState(names[123]);
-  const handleData = (data) => {
-  console.log(data)
-}
+  
   const handleClick = () => {
     const selectResults = [{
         dream,
         target,
         safety,
       }]
-      
+     
      const configObj = {
        method: 'POST',
        headers: {"Content-Type": "application/json"},
        body: JSON.stringify(selectResults)
      }
+    
+     getResults(configObj)
+  }
 
-      fetch("https://college-rec-system.herokuapp.com/model/", configObj)
-        .then(res => res.json())
-        .then(data => handleData(data))
-        .catch(e => console.error("e:", e))
+  const getResults = async (configObj) => {
+    try {
+      const response = await fetch("https://college-rec-system.herokuapp.com/model/", configObj)
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

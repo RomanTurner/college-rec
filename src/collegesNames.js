@@ -2000,7 +2000,6 @@ const colleges = {
   6217: "Purdue University Northwest",
   6221: "East-West University",
   6227: "Yeshiva Kollel Tifereth Elizer",
-  6228: "Select or Type",
 };
 
 const names = Object.values(colleges);

@@ -20,7 +20,7 @@ function AutocompleteTextField({ college, callback }) {
         onInputChange={(event, newInput) => {
           setInput(newInput);
         }}
-        id='autocomplete-textfield'
+        id={college}
         options={names}
         style={{ width: 300 }}
         renderInput={(params) => (
