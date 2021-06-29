@@ -19,8 +19,6 @@ function College() {
 
 
   return (
-    <>
- 
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
             <Typography gutterBottom variant='h2' component='h1'>
@@ -39,7 +37,6 @@ function College() {
             </Grid>
           </Grid>
       </Grid>
-      </>
       );
 }
 
