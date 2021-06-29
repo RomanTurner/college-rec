@@ -22,11 +22,11 @@ function CollegeSelect({setResults}) {
   console.log(data)
 }
   const handleClick = () => {
-    const selectResults = {
+    const selectResults = [{
         dream,
         target,
         safety,
-      }
+      }]
       
      const configObj = {
        method: 'POST',
