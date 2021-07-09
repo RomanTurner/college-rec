@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     paddingTop: theme.spacing(2),
   },
+  results: {
+    width: '100%',
+    height: '50vh'
+  }
 }));
 
 function College() {
@@ -19,25 +23,27 @@ function College() {
 
 
   return (
-        <Grid container className={classes.root} spacing={2}>
-          <Grid item xs={12}>
-            <Typography gutterBottom variant='h2' component='h1'>
-              Select Colleges
-            </Typography>
-            <Grid container justify='center' spacing={2}>
-              <CollegeSelect setResults={setResults} />
-            </Grid>
+    <>
+      <Grid container className={classes.root} spacing={2}>
+        <Grid item xs={12}>
+          <Typography gutterBottom variant='h2' component='h1'>
+            Select Colleges
+          </Typography>
+          <Grid container justify='center' spacing={2}>
+            <CollegeSelect setResults={setResults} />
           </Grid>
-          <Grid item xs={12}>
-            <Typography gutterBottom variant='h2' component='h1'>
-              Results :
-            </Typography>
-            <Grid container justify='center' spacing={2}>
-              <CollegePreview results={results} />
-            </Grid>
-          </Grid>
+        </Grid>
       </Grid>
-      );
+      <Grid container className={classes.results} spacing={2}>
+        <Grid item xs={12} md={12}>
+          <Typography gutterBottom variant='h2' component='h1'>
+            Results :
+          </Typography>
+        </Grid>
+          <CollegePreview results={results} />
+      </Grid>
+    </>
+  );
 }
 
 export default College

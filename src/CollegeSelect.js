@@ -1,5 +1,5 @@
 import React from "react";
-import { names } from "./collegesNames.js"
+import nameList from "./names.json"
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -14,19 +14,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CollegeSelect() {
+function CollegeSelect({setResults}) {
+  const names = Object.values(nameList);
   const classes = useStyles();
+
   const [dream, setDream] = React.useState(names[345]);
-  const [target, setTarget] = React.useState(names[12]);
+  const [target, setTarget] = React.useState(names[10]);
   const [safety, setSafety] = React.useState(names[123]);
-  
+
   const handleClick = () => {
-    const selectResults = [{
+    const selectResults = [
+      {
         dream,
         target,
         safety,
-      }]
-     
+      },
+    ];
+
+    console.log(selectResults);
+    
      const configObj = {
        method: "POST",
        headers: {
@@ -39,6 +45,7 @@ function CollegeSelect() {
      getResults(configObj)
   }
 
+
   const getResults = async (configObj) => {
    
     try {
@@ -47,7 +54,7 @@ function CollegeSelect() {
         configObj
       );
       const data = await response.json()
-      console.log(data)
+      setResults(data)
     } catch (error) {
       console.log(error)
     }
