@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
-import Fade from "@material-ui/core/Fade";
+import Grow from "@material-ui/core/Grow";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,6 +22,7 @@ export default function CollegePreview({ results }) {
   if (!results) {
     return <div>No Results</div>;
   }
+  console.log(results.results)
 
   const content = results.results.map((college) => {
     const {
@@ -36,7 +37,10 @@ export default function CollegePreview({ results }) {
     } = college;
 
     return (
-      <Fade in={results}>
+      <Grow
+        in={results}
+        style={{ transformOrigin: '0 0 0' }}
+          {...(results.results.length > 0 ? { timeout: 1000 } : {})}>
         <Grid item>
           <Card className={classes} key={id}>
             <CardContent key={id}>
@@ -94,7 +98,7 @@ export default function CollegePreview({ results }) {
             </CardContent>
           </Card>
         </Grid>
-      </Fade>
+      </Grow>
     );
   });
 
