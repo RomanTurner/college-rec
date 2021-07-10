@@ -23,6 +23,7 @@ function CollegeSelect({ setResults }) {
   const [safety, setSafety] = React.useState(names[123]);
 
   const handleClick = () => {
+    setResults("");
     const selectResults = [
       {
         dream,
@@ -55,6 +56,8 @@ function CollegeSelect({ setResults }) {
       console.log(error);
     }
   };
+
+  
 
   return (
     <>

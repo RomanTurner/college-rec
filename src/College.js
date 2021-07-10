@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 function College() {
   const classes = useStyles();
   const [results, setResults] = React.useState({results: []});
-
+  
 
   return (
     <>
