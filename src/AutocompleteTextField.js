@@ -21,7 +21,11 @@ function AutocompleteTextField({ college, callback }) {
         options={names}
         style={{ width: 300 }}
         renderInput={(params) => (
-          <TextField {...params} label="title" variant='outlined' />
+          <TextField
+            {...params}
+            label={college}
+            variant='outlined'
+          />
         )}
       />
     </>

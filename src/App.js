@@ -1,7 +1,7 @@
 import React from "react";
 import College from "./College";
+import Test from "./Test";
 import Header from "./Header";
-import CollegeShow from "./CollegeShow";
 import { Switch, Route, Redirect } from "react-router";
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
         <Header />
         <College />
       </Route>
-      <Route path='colleges/:name'>
-        <CollegeShow />
+      <Route path='/test'>
+        <Test />
       </Route>
       <Route path='/'>
         <Redirect to='/colleges' />

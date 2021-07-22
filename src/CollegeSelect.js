@@ -8,13 +8,12 @@ import AutocompleteTextField from "./AutocompleteTextField.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
     padding: theme.spacing(6),
-    display: "flex",
-    justifyContent: "center",
   },
 }));
 
-function CollegeSelect({ setResults }) {
+function CollegeSelect({ setResults, activeStep, steps }) {
   const names = Object.values(nameList);
   const classes = useStyles();
 
@@ -23,6 +22,7 @@ function CollegeSelect({ setResults }) {
   const [safety, setSafety] = React.useState(names[123]);
 
   const handleClick = () => {
+    setResults("");
     const selectResults = [
       {
         dream,
@@ -58,23 +58,25 @@ function CollegeSelect({ setResults }) {
 
   return (
     <>
-      <Grid container className={classes.root}>
-        <Grid item xs={12} md={4}>
-          <Typography>Dream: {dream} </Typography>
-          <AutocompleteTextField college={dream} callback={setDream} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Typography>Target: {target} </Typography>
-          <AutocompleteTextField college={target} callback={setTarget} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Typography>Safety: {safety} </Typography>
-          <AutocompleteTextField college={safety} callback={setSafety} />
-        </Grid>
+      <Grid item xs={12} sm={4}>
+        <AutocompleteTextField college={dream} callback={setDream} />
       </Grid>
-      <Button onClick={() => handleClick()} size='small' color='primary'>
-        Submit
-      </Button>
+      <Grid item xs={12} sm={4}>
+        <AutocompleteTextField college={target} callback={setTarget} />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <AutocompleteTextField college={safety} callback={setSafety} />
+      </Grid>
+      <Grid item xs={12} container justify='center'>
+        <Button
+          onClick={() => handleClick()}
+          variant='contained'
+          color='primary'
+          className={classes.button}
+        >
+          Submit
+        </Button>
+      </Grid>
     </>
   );
 }
