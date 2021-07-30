@@ -18,17 +18,17 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     minHeight: "300px",
-    width: "900px",
-  },
-  content: {
-    flex: "1 0 1",
+    width: "100%",
   },
   image: {
-    alignContent: "left",
     maxWidth: "300px",
     minWidth: "300px",
     width: "100%",
   },
+  details: {
+    paddingLeft: '10px',
+    width: '80vw'
+  }
 }));
 
 export default function CollegePreview({ results }) {

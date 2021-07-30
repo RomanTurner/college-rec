@@ -8,38 +8,44 @@ import { makeStyles } from "@material-ui/core/styles";
 import AutocompleteTextField from "./AutocompleteTextField.js";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        backgroundColor: 'blue',
-        minHeight: '300px',
-    },
-    card: {
-        height: '100px',
-        width: '100px'
-    }
-}))
-
+  gContainer: {
+    flexGrow: 1,
+    justifyContent:"center"
+  },
+  gItem: {
+    padding: theme.spacing(2),
+    backgroundColor: "blue",
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    justifySelf: "center",
+    backgroundColor: "pink",
+    width: "80%",
+  },
+}));
 
 export default function Test() {
-    const classes = useStyles();
-    return (
-      <Grid container className={classes.root}>
-        <Grid item xs={12} className={classes.card}>
-          <Paper>Hi</Paper>
-        </Grid>
-        <Grid item xs={12} className={classes.card}>
-          <Paper>Hi</Paper>
-        </Grid>
-        <Grid container justify='center' item xs={12}>
-          <Grid item xs={4}>
-            <Paper className={classes.card}>Hi</Paper>
-          </Grid>
-          <Grid item xs={4}>
-            <Paper className={classes.card}>Hi</Paper>
-          </Grid>
-          <Grid item xs={4}>
-            <Paper className={classes.card}>Hi</Paper>
-          </Grid>
-        </Grid>
+  const classes = useStyles();
+  return (
+    <Grid
+      className={classes.gContainer}
+      container
+      direction='row'
+      justifyContent='space-around'
+      alignItems='center'
+      spacing={2}
+    >
+      <Grid className={classes.gItem} item xs={12}>
+        <Paper className={classes.paper}>Some text</Paper>
       </Grid>
-    );
+    </Grid>
+  );
 }
+/*       <Grid className={classes.gItem} item xs={4}>
+        <Paper className={classes.paper}>Some text</Paper>
+      </Grid>
+      <Grid className={classes.gItem} item xs={4}>
+        <Paper className={classes.paper}>Some text</Paper>
+      </Grid>
+       */

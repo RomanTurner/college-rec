@@ -10,7 +10,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 0,
     paddingTop: theme.spacing(2),
     width: "100%",
-  }
+  },
+  results: {
+    backgroundColor: "#fafdff",
+  },
 }));
 
 function College() {
@@ -18,19 +21,22 @@ function College() {
   const [results, setResults] = React.useState({ results: [] });
 
   return (
-    <>
-      <Grid container justify='center' className={classes.root} spacing={2}>
+      <Grid container justify='center' className={classes.root} spacing={3}>
         <CollegeSelect setResults={setResults} />
-      </Grid>
         <Grid item xs={12}>
-          <Typography gutterBottom variant='h2' component='h1'>
-            Results :
+          <Typography gutterBottom align='center' variant='h4' component='h1'>
+            Results
           </Typography>
         </Grid>
-        <Grid container justify='center' spacing={3}>
+        <Grid
+          container
+          justify='center'
+          className={classes.results}
+          spacing={3}
+        >
           <CollegePreview results={results} />
         </Grid>
-    </>
+      </Grid>
   );
 }
 
