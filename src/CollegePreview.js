@@ -67,6 +67,17 @@ export default function CollegePreview({ results }) {
     
   const adminRate = Math.floor(admission_rate * 100);
 
+    if (image !== "No image") {
+      const img = new Image(image);
+      img.src = image
+      if (img.naturalWidth === 0) {
+         image = fallbackImg;
+      }
+    } else {
+      image = fallbackImg;
+    };
+    
+    
     return (
       <Grow
         in={results}
