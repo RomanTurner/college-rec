@@ -1,31 +1,47 @@
 import React from "react";
 import nameList from "./names.json";
 import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
+import Introductions from "./Introduction";
+import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AutocompleteTextField from "./AutocompleteTextField.js";
 
+
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(6),
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    backgroundColor: "#fff",
+  },
+  paperOn: {
+    color: "#fff",
+    padding: theme.spacing(2),
+    textAlign: "center",
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 
-function CollegeSelect({ setResults, activeStep, steps }) {
+function CollegeSelect({ setResults }) {
   const names = Object.values(nameList);
   const classes = useStyles();
+  const [reach, setReach] = React.useState(names[2001]);
+  const [target, setTarget] = React.useState(names[2001]);
+  const [safety, setSafety] = React.useState(names[2001]);
 
-  const [dream, setDream] = React.useState(names[345]);
-  const [target, setTarget] = React.useState(names[10]);
-  const [safety, setSafety] = React.useState(names[123]);
+  const isSelected = (college) =>
+    college === "Select a University" || college === null;
+
+  const canSubmit = () => {
+    return isSelected(reach) || isSelected(safety) || isSelected(target);
+  };
 
   const handleClick = () => {
     setResults("");
     const selectResults = [
       {
-        dream,
+        dream:reach,
         target,
         safety,
       },
@@ -57,18 +73,31 @@ function CollegeSelect({ setResults, activeStep, steps }) {
   };
 
   return (
-    <>
-      <Grid item xs={12} sm={4}>
-        <AutocompleteTextField college={dream} callback={setDream} />
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Introductions />
       </Grid>
       <Grid item xs={12} sm={4}>
-        <AutocompleteTextField college={target} callback={setTarget} />
+        <Paper className={isSelected(reach) ? classes.paper : classes.paperOn}>
+          <Typography variant='h6'>Reach</Typography>
+          <AutocompleteTextField college={reach} callback={setReach} />
+        </Paper>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <AutocompleteTextField college={safety} callback={setSafety} />
+        <Paper className={isSelected(target) ? classes.paper : classes.paperOn}>
+          <Typography variant='h6'>Target</Typography>
+          <AutocompleteTextField college={target} callback={setTarget} />
+        </Paper>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Paper className={isSelected(safety) ? classes.paper : classes.paperOn}>
+          <Typography variant='h6'>Safety</Typography>
+          <AutocompleteTextField college={safety} callback={setSafety} />
+        </Paper>
       </Grid>
       <Grid item xs={12} container justify='center'>
         <Button
+          disabled={canSubmit()}
           onClick={() => handleClick()}
           variant='contained'
           color='primary'
@@ -77,7 +106,7 @@ function CollegeSelect({ setResults, activeStep, steps }) {
           Submit
         </Button>
       </Grid>
-    </>
+    </Grid>
   );
 }
 

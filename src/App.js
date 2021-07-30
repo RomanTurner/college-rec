@@ -1,7 +1,7 @@
 import React from "react";
-import College from "./College";
 import Test from "./Test";
 import Header from "./Header";
+import College from "./College";
 import { Switch, Route, Redirect } from "react-router";
 
 function App() {

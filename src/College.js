@@ -7,9 +7,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 0,
-    paddingTop: theme.spacing(2),
-    width: "100%",
+    width: "100vw",
+    padding: "10px",
+  },
+  results: {
+    width: "80vw",
+  },
+  rTitle: {
+    paddingTop: '1rem'
   }
 }));
 
@@ -18,19 +23,19 @@ function College() {
   const [results, setResults] = React.useState({ results: [] });
 
   return (
-    <>
-      <Grid container justify='center' className={classes.root} spacing={2}>
-        <CollegeSelect setResults={setResults} />
+    <Grid container justify='center' className={classes.root}>
+      <CollegeSelect setResults={setResults} />
+      <Grid item xs={12}>
+        <div className={classes.rTitle}>
+        <Typography gutterBottom align='center' variant='h4' component='h1'>
+          Results
+        </Typography>
+        </div>
       </Grid>
-        <Grid item xs={12}>
-          <Typography gutterBottom variant='h2' component='h1'>
-            Results :
-          </Typography>
-        </Grid>
-        <Grid container justify='center' spacing={3}>
-          <CollegePreview results={results} />
-        </Grid>
-    </>
+      <Grid container spacing={3} className={classes.results}>
+        <CollegePreview results={results} />
+      </Grid>
+    </Grid>
   );
 }
 

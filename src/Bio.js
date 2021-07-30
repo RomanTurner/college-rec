@@ -1,4 +1,5 @@
 import React from "react";
+import RomanImage from "./img/pp_square.png";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -25,7 +26,7 @@ export default function MediaCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image='/static/images/cards/contemplative-reptile.jpg'
+          image={RomanImage}
           title='Contemplative Reptile'
         />
         <CardContent>
