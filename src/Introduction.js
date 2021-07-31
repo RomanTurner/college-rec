@@ -36,10 +36,10 @@ function Introduction() {
           </Typography>
           <Divider />
           <Typography display='block' variant='body1' gutterBottom>
-            We wanted to provide a tool to help those in search for their next
-            step in education. Most people are limited in picking the right
-            university, or college for themselves because there hasn't been a
-            way to see what which colleges are the best for you.
+            We created a tool to help those in search of their next step in
+            education. There are a lot of options out there! Most prospective
+            students are only familiar with a few institutions, this tool will
+            help introduce more.
           </Typography>
         </div>
       </Grid>
@@ -70,9 +70,10 @@ function Introduction() {
           </Typography>
           <Divider />
           <Typography display='block' variant='body1' gutterBottom>
-            It is simple to use, just select from over 2000 availible colleges
-            and universities and hit 'Submit'. The machine will do all the heavy
-            lifting and return the results in the section below.
+            Select a Reach, Target, and Safety School from our list of over 2000
+            institutions and click 'Submit'. Take advantage of the search text
+            field if you know the names, or play around with random schools.
+            Abbreviation will not work on for the search function.
           </Typography>
         </div>
       </Grid>
