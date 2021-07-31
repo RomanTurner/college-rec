@@ -44,10 +44,14 @@ export default function CollegePreview({ results }) {
     );
   }
   const checked = results.results.length > 0
-
   const content = results.results.map((college) => {
-  
     let {
+      HBCU,
+      MENONLY,
+      WOMENONLY,
+      control,
+      avg_ACT,
+      avg_SAT,
       stabbr,
       admission_rate,
       avg_tuition,
@@ -60,22 +64,28 @@ export default function CollegePreview({ results }) {
       description
     } = college;
 
+    console.log(college)
+  //formats the average tuition  
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
     
-  const adminRate = Math.floor(admission_rate * 100);
+  //checks Admission Rate
+    let adminRate;
+    if(admission_rate !== "No data available"){ adminRate = Math.floor(admission_rate * 100) };
 
-    if (image !== "No image") {
-      const img = new Image(image);
-      img.src = image
-      if (img.naturalWidth === 0) {
-         image = fallbackImg;
-      }
-    } else {
-      image = fallbackImg;
-    };
+  // //checks Image
+  //   if (image !== "No image") {
+  //     const img = new Image(image);
+  //     img.src = image
+  //     console.log({img})
+  //     if (img.naturalWidth === 0) {
+  //        image = fallbackImg;
+  //     }
+  //   } else {
+  //     image = fallbackImg;
+  //   };
     
     
     return (
