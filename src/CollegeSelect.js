@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     backgroundColor: theme.palette.primary.main,
   },
+  button: {
+    width: '50vw'
+  }
 }));
 
 function CollegeSelect({ setResults }) {
@@ -101,6 +104,7 @@ function CollegeSelect({ setResults }) {
           onClick={() => handleClick()}
           variant='contained'
           color='primary'
+          size='large'
           className={classes.button}
         >
           Submit
