@@ -7,15 +7,12 @@ import { Switch, Route, Redirect } from "react-router";
 function App() {
   return (
     <Switch>
-      <Route path='/colleges'>
+      <Route path='/'>
         <Header />
         <College />
       </Route>
-      <Route path='/test'>
-        <MobileCard/>
-      </Route>
-      <Route path='/'>
-        <Redirect to='/colleges' />
+      <Route path='*'>
+        <Redirect to='/' />
       </Route>
     </Switch>
   );
