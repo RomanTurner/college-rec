@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import College from "./College";
-import MobileCard from "./MobileCard"
 import { Switch, Route, Redirect } from "react-router";
 
 function App() {
