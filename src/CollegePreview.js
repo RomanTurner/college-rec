@@ -7,7 +7,7 @@ import MobileCard from "./MobileCard";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 export default function CollegePreview({ results }) {
-   const theme = useTheme();
+  const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   
   if (!results) {
@@ -19,11 +19,11 @@ export default function CollegePreview({ results }) {
   }
   
   const screen = results.results.map((college) => (
-    <FullscreenCard {...college} results={results}/>
+       <FullscreenCard {...college} results={results}/>
   ));
 
   const mobile = results.results.map((college) => (
-    <MobileCard {...college} results={results}/>
+       <MobileCard {...college} results={results}/>  
   ));
 
   return matches ? screen : mobile;
