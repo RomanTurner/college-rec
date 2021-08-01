@@ -41,7 +41,7 @@ function College() {
           </Typography>
         </div>
       </Grid>
-      <Grid container spacing={3} className={classes.results}>
+      <Grid container justify='center' spacing={3} className={classes.results}>
         <CollegePreview results={results} />
       </Grid>
       <Grid item xs={12}>

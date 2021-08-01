@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Introduction() {
   const classes = useStyles();
-  const preventDefault = (event) => event.preventDefault();
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
@@ -54,8 +54,9 @@ function Introduction() {
             The backend features a content based recommendation system that
             determines closest matches using 40+ weighted features from the
             <Link
+              rel='noreferrer'
+              target='_blank'
               href='https://collegescorecard.ed.gov/'
-              onClick={preventDefault}
             >
               {" "}
               Department of Education's College Scorecard.

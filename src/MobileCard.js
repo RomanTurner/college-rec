@@ -1,33 +1,31 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Grow from "@material-ui/core/Grow";
+import Card from "@material-ui/core/Card";
 import Link from "@material-ui/core/Link";
-import fallbackImg from "./img/placeholder-img.png";
+import Grow from "@material-ui/core/Grow";
+import WcIcon from "@material-ui/icons/Wc";
+import { red } from "@material-ui/core/colors";
+import Collapse from "@material-ui/core/Collapse";
 import PublicIcon from "@material-ui/icons/Public";
 import SchoolIcon from "@material-ui/icons/School";
-import WcIcon from "@material-ui/icons/Wc";
+import fallbackImg from "./img/placeholder-img.png";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import CardHeader from "@material-ui/core/CardHeader";
+import { makeStyles } from "@material-ui/core/styles";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import LanguageIcon from "@material-ui/icons/Language";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import LocationCityIcon from "@material-ui/icons/LocationCity";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import LibraryAddCheckIcon from "@material-ui/icons/LibraryAddCheck";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
@@ -73,29 +71,32 @@ export default function MobileCard({
     setExpanded(!expanded);
   };
 
-   const preventDefault = (event) => event.preventDefault();
-   //formats the average tuition
-   const formatter = new Intl.NumberFormat("en-US", {
-     style: "currency",
-     currency: "USD",
-   });
+  // checks to see if it is a valid link
+  const httpCheck = "https://";
+  if (!url.match(httpCheck)) url = `https://${url}`;
 
-   //checks Admission Rate
-   let adminRate;
-   if (admission_rate !== "No data available") {
-     adminRate = Math.floor(admission_rate * 100);
-   }
+  //formats the average tuition
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
-   const yesOrNo = (value) => {
-     if (value) {
-       return "Yes.";
-     } else {
-       return "No.";
-     }
-   };
+  //checks Admission Rate
+  let adminRate;
+  if (admission_rate !== "No data available") {
+    adminRate = Math.floor(admission_rate * 100);
+  }
+
+  const yesOrNo = (value) => {
+    if (value) {
+      return "Yes.";
+    } else {
+      return "No.";
+    }
+  };
 
   if (image === "No image") image = fallbackImg;
-  
+
   return (
     <Grow
       in={results}
@@ -105,11 +106,9 @@ export default function MobileCard({
       <Grid item xs={12}>
         <Card className={classes.root}>
           <CardHeader
-            rel='noreferrer'
-            target='_blank'
             title={schoolname}
             subheader={
-              <Link href={`http://${url}`} onClick={preventDefault}>
+              <Link rel='noreferrer' target='_blank' href={url}>
                 {url}
               </Link>
             }
@@ -204,13 +203,8 @@ export default function MobileCard({
                 </Grid>
                 <Grid item={8}>
                   <Typography>
-                    <Link
-                      rel='noreferrer'
-                      target='_blank'
-                      to={`http://${url}`}
-                      onClick={preventDefault}
-                    >
-                      {` ${url}`}
+                    <Link rel='noreferrer' target='_blank' href={url}>
+                      {url}
                     </Link>
                   </Typography>
                 </Grid>
@@ -227,6 +221,36 @@ export default function MobileCard({
                     component='p'
                   >
                     {control}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid container spacing={1}>
+                <Grid item={4}>
+                  <LibraryAddCheckIcon />
+                </Grid>
+                <Grid item={8}>
+                  <Typography
+                    key={id}
+                    variant='body1'
+                    color='textSecondary'
+                    component='p'
+                  >
+                    Avg ACT: {avg_ACT}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid container spacing={1}>
+                <Grid item={4}>
+                  <LibraryAddCheckIcon />
+                </Grid>
+                <Grid item={8}>
+                  <Typography
+                    key={id}
+                    variant='body1'
+                    color='textSecondary'
+                    component='p'
+                  >
+                    Avg SAT: {avg_SAT}
                   </Typography>
                 </Grid>
               </Grid>
